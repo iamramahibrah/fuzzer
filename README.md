@@ -1,2 +1,2 @@
-# ffufautomation
+# Fuzzer 
 simple fuzzing tool inspired by ffuf 
