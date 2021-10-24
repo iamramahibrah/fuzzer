@@ -55,10 +55,6 @@ function help
 {
 echo -e "
 
-usage:::  ffufauto --[options]
-      -------------
-      options
-
          -H --help | Show usage help
          -d --dir  | Discover hidden directories /admin panel "
 
