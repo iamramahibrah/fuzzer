@@ -15,3 +15,6 @@ git@github.com:iamramahibrah/fuzzer.git
          -d --dir     | Discover hidden directories /admin panel 
 
 ````
+#### Tools
+- ffuf
+- golang(go)
