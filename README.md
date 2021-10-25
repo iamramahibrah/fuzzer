@@ -2,4 +2,5 @@
 simple fuzzing tool inspired by ffuf 
 
 ### Installation
+### Usage
 
