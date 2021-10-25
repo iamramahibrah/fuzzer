@@ -1,8 +1,14 @@
 #!/bin/bash
 
+function ban
+{
+
 echo -e "
-          =[FUZZ ]=
-              V0.1"
+       // FUZZER AUTOMATION //
+                     v0.1"
+
+}
+
 
 
 
@@ -27,6 +33,13 @@ sleep 1s
 sudo apt-get install golang -y
 echo -e "Ffuf installed succefully 😉"
 fi
+
+if ! which amass >/dev/null; then
+echo -e "installing amass ..."
+sleep 1s
+sudo apt-get install amass -y
+echo -e "amass installed succefully 😉"
+fi
 }
 
 
@@ -48,21 +61,42 @@ echo -e "Ffuf                                  [x]"
 else
 echo -e "Ffuf                                  [Ok]"
 fi
+
+#///
+
+if ! which amass >/dev/null; then
+echo -e "Amass                                   [x]"
+else
+echo -e "Amass                                  [Ok]"
+fi
 }
 
+
+function dns-enum
+{
+
+echo -e -n "Enter url: "
+read dns
+echo -e "enumerating $dns"
+amass enum --passive -d $dns 
+
+}
 
 function help
 {
 echo -e "
 
-         -H --help | Show usage help
-         -d --dir  | Discover hidden directories /admin panel "
+         -H --help    | Show usage help
+         -i --install | Install tools
+         -c --check   | check tools
+         -d --dir     | Discover hidden directories /admin panel
+         -e --enum    | subdomain enumeration"
 
 }
 
 function dir
 {
-	echo -e "Enter link: "
+	echo -e -n "Enter link: "
 	read link
 	ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u $link -c -v
 }
@@ -71,14 +105,28 @@ while [ $# -gt 0 ]; do
   case "$1" in
     -H|--help)
       clear
+      ban
       help
       ;;
     -d|--dir)
       clear
+      ban
       dir
       ;;
-    --cve-scanner)
-      cve
+    -e|--enum)
+     clear
+     ban
+     dns-enum
+      ;;
+    -i|--install)
+      clear
+      ban
+      install
+      ;;
+    -c|--check)
+      clear
+      ban
+      check
       ;;
 
     *)
