@@ -18,3 +18,4 @@ git@github.com:iamramahibrah/fuzzer.git
 #### Tools
 - ffuf
 - golang(go)
+- Amass
